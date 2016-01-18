@@ -29,6 +29,23 @@
 #include <mach/mach.h>
 #endif
 
+#ifdef _WIN32
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#undef abs
+#include <algorithm>
+#define CLOCK_REALTIME 0
+static int clock_gettime(int, struct timespec *spec)
+{
+	__int64 wintime; GetSystemTimeAsFileTime((FILETIME*)&wintime);
+	wintime -= 116444736000000000i64;             // 1 Jan 1601 to 1 Jan 1970
+	spec->tv_sec = wintime / 10000000i64;         // Seconds
+	spec->tv_nsec = wintime % 10000000i64 * 100;  // Nanoseconds
+	return 0;
+}
+#endif
+
 namespace
 {
     static int daysInMonth[2][13] = {
