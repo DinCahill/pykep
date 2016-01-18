@@ -208,6 +208,15 @@
 #endif
 
 
+/*
+   Windows' rcpndr.h has "#define small char", but it is used here
+   as a variable name.
+*/
+#ifdef _WIN32
+#undef small
+#endif
+
+
 #ifdef __cplusplus
    extern "C" { 
 #endif
