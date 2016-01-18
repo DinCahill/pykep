@@ -6,6 +6,9 @@ extern double sqrt(), f__cabs();
 VOID c_sqrt(r, z) complex *r, *z;
 #else
 #undef abs
+#ifdef _WIN32
+#define _COMPLEX_DEFINED
+#endif
 #include "math.h"
 extern double f__cabs(double, double);
 

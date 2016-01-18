@@ -5,6 +5,9 @@ extern double log(), f__cabs(), atan2();
 VOID c_log(r, z) complex *r, *z;
 #else
 #undef abs
+#ifdef _WIN32
+#define _COMPLEX_DEFINED
+#endif
 #include "math.h"
 extern double f__cabs(double, double);
 

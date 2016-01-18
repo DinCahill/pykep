@@ -6,6 +6,9 @@ extern double exp(), cos(), sin();
  VOID c_exp(r, z) complex *r, *z;
 #else
 #undef abs
+#ifdef _WIN32
+#define _COMPLEX_DEFINED
+#endif
 #include "math.h"
 
 void c_exp(complex *r, complex *z)
