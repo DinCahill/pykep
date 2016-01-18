@@ -70,7 +70,11 @@
 #ifdef MSDOS
 #include "io.h"
 #else
+#ifdef _WIN32
+#define access _access
+#else
 #include "unistd.h" /* for access */
+#endif
 #endif
 #endif
 
