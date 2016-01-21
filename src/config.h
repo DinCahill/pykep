@@ -13,8 +13,18 @@
 		#define __KEP_TOOL_VISIBLE
 	#endif
 	#define __KEP_TOOL_VISIBLE_FUNC __KEP_TOOL_VISIBLE
+
+	#if defined(_sims_flanagan_EXPORTS) || defined(_planet_EXPORTS) || defined(_core_EXPORTS)
+		#define __PYKEP_VISIBLE __declspec(dllexport)
+	#else
+		#define __PYKEP_VISIBLE
+	#endif
+	#define __PYKEP_VISIBLE_FUNC __PYKEP_VISIBLE
 #else
 	#define __KEP_TOOL_VISIBLE __attribute__ ((visibility("default")))
 	#define __KEP_TOOL_VISIBLE_FUNC
+
+	#define __PYKEP_VISIBLE __attribute__ ((visibility("default")))
+	#define __PYKEP_VISIBLE_FUNC
 #endif
 #endif

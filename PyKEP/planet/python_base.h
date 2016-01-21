@@ -37,7 +37,7 @@
 namespace kep_toolbox { namespace planet {
 
 // Wrapper for exporting the planet::base into python
-class __KEP_TOOL_VISIBLE python_base : public base, public boost::python::wrapper<base>
+class __PYKEP_VISIBLE python_base : public base, public boost::python::wrapper<base>
 {
 	public:
 		/// Same constructor as plates::base
