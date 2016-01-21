@@ -49,7 +49,7 @@ namespace sims_flanagan{
 class __KEP_TOOL_VISIBLE sc_state
 {
 
-	friend std::ostream &operator<<(std::ostream &s, const sc_state &in );
+	__KEP_TOOL_VISIBLE friend std::ostream &operator<<(std::ostream &s, const sc_state &in );
 
 public:
 	/** @name Constructors*/

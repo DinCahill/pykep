@@ -46,7 +46,7 @@ namespace sims_flanagan{
 
 class __KEP_TOOL_VISIBLE spacecraft
 {
-	friend std::ostream &operator<<(std::ostream &s, const spacecraft &in );
+	__KEP_TOOL_VISIBLE friend std::ostream &operator<<(std::ostream &s, const spacecraft &in );
 public:
 	spacecraft():m_mass(0),m_thrust(0),m_isp(0) {}
 	spacecraft(const double &mass_, const double &thrust_, const double &isp_) : m_mass(mass_), m_thrust(thrust_), m_isp(isp_) {}

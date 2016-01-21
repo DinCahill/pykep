@@ -64,7 +64,7 @@ namespace sims_flanagan{
 */
 class __KEP_TOOL_VISIBLE leg_s
 {
-	friend std::ostream &operator<<(std::ostream &s, const leg_s &in );
+	__KEP_TOOL_VISIBLE friend std::ostream &operator<<(std::ostream &s, const leg_s &in );
 
 public:
 	std::string human_readable() const;
