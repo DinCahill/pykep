@@ -56,6 +56,3 @@ after_success:
 branches:
   only:
     - test
-
-
-
