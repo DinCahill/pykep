@@ -17,18 +17,25 @@ install:
   - rm boost.tar.bz2
   - export BOOST_ROOT=$(pwd)/boost
 
+cache:
+  directories:
+  - ~/boost
+
 script:
   - mkdir build && cd build
-  - cmake ../ -DBUILD_SPICE="ON" -DBUILD_PYKEP="ON" -DBUILD_MAIN="ON" -DBUILD_TEST="ON" -DPYTHON_MODULES_DIR="~/local/lib/python/site-packages" -DCMAKE_INSTALL_PREFIX="~/local"
+  - cmake ../ -DBUILD_SPICE="ON" -DBUILD_PYKEP="ON" -DBUILD_MAIN="ON" -DBUILD_TESTS="ON" -DPYTHON_MODULES_DIR="~/local/lib/python/site-packages" -DCMAKE_INSTALL_PREFIX="~/local"
   - make -j4
   - make test
   - make install
 
 after_success:
   - export PYTHONPATH=~/local/lib/python/site-packages
-  - export LD_LIBRARY_PATH=~/local/lib
+  - export LD_LIBRARY_PATH=~/local/lib;${BOOST_ROOT}/lib
   - python -c "import PyKEP; print(PyKEP.__version__); print(PyKEP.__extensions__)"
 
 branches:
   only:
     - test
+
+notifications:
+  email: false
